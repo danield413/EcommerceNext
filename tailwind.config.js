@@ -21,7 +21,9 @@ module.exports = {
       'sm': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
 
-      'xs': {'max': '500px'}
+      'xs': {'max': '500px'},
+
+      '2xs' : {'max': '400px'},
     }
   },
   variants: {},

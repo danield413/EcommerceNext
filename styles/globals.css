@@ -43,6 +43,19 @@
     animation-delay: -1.0s;
 }
 
+.width-search{
+    width: 60vw;
+}
+
+
+.left-100vw {
+    left: -100%;
+}
+
+.transition-menu {
+    transition: .6s ease-in-out;
+}
+
 @-webkit-keyframes sk-bounce {
     0%, 100% {
         -webkit-transform: scale(0.0)

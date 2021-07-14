@@ -38,7 +38,7 @@ export default function Home({ categories, allProducts }) {
           <title>Ecommerce Colombia</title>
       </Head>
       <Navbar />
-      <main className="flex flex-col px-14 animate__animated animate__fadeIn pt-16 min-h-screen">
+      <main className="flex flex-col px-36 lg:px-2 animate__animated animate__fadeIn pt-16 min-h-screen">
         <Categories data={ categories }/>
         <div>
 

@@ -1,34 +1,44 @@
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { changeCategorie } from '../store/products';
-import React from 'react';
+import { BsCaretDownFill, BsCaretUpFill } from 'react-icons/bs';
 
 const Categories = ({data}) => {
 
     const dispatch = useDispatch();
     const { currentCategorie } = useSelector(state => state.products);
+    const [openDropDown, setOpenDropDown] = useState(false);
 
     const handleChangeCategorie = (categorie) => {
-        dispatch( changeCategorie(categorie) )
+        setOpenDropDown(false);
+        dispatch( changeCategorie(categorie) );
     }
 
     return (
-        <aside className="h-48">
-            <h1 className="mt-2 text-xl text-center">Categorias</h1>
-                        <button 
-                            className={`bg-gray-200 mb-4 w-60 mx-2 px-4 py-2 mt-4 rounded-lg border-2 text-gray-500 border-blue-100 hover:border-blue-500 transition ${ currentCategorie ===  '' ? 'border-blue-500 text-gray-900' : ''}`}
-                            onClick={() => handleChangeCategorie('')}
-                        >Todos los productos</button>
-                {
-                    data && data.map(( categorie, index) => (
-                        <button 
-                            key={index}
-                            className={`bg-gray-200 mb-4 w-60 mx-2 px-4 py-2 rounded-lg border-2 text-gray-500 border-blue-100 hover:border-blue-500 transition ${categorie === currentCategorie ? 'border-blue-500 text-gray-900' : ''}`}
-                            onClick={() => handleChangeCategorie(categorie)}
-                        >{categorie}</button>
-                    ))
-                }
+        <header className="h-28 relative flex justify-center items-center">
 
-        </aside>
+            <div>
+                <div className="p-2 rounded-lg w-60 h-10 bg-gray-300">
+                    <button onClick={() => setOpenDropDown(!openDropDown)} className="w-full flex justify-between items-center  h-full border-none lg:text-sm">
+                        <span>Categorías</span>
+                        {!openDropDown ? <BsCaretDownFill className="transition" /> : <BsCaretUpFill className="transition" />}
+                    </button>
+                </div>
+                <div className={`w-60 rounded absolute mt-1 bg-gray-300 p-1 z-50 transition ease-in ${!openDropDown ? 'hidden' : 'block'}`}>
+
+                    <div onClick={() => handleChangeCategorie('')} className={`w-full h-10 bg-gray-300 rounded my-1 flex justify-center items-center cursor-pointer hover:bg-gray-400 transition lg:text-sm ${currentCategorie === '' && 'bg-gray-400'}`}>
+                        Todos los productos
+                    </div>
+
+                    {data && data.map((categorie, index) => (
+                        <div onClick={() => handleChangeCategorie(categorie)} key={index} className={`w-full h-10 bg-gray-300 rounded my-1 flex justify-center items-center cursor-pointer hover:bg-gray-400 transition lg:text-sm ${currentCategorie === categorie && 'bg-gray-400'}`}>
+                            {categorie}
+                        </div>
+                    ))}
+                </div> 
+            </div>
+
+        </header>
     )
 }
 
