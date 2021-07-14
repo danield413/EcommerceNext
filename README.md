@@ -1,4 +1,4 @@
-## SEcommerce NextJS
+## Simulation of an Ecommerce in NextJS
 
 It doesn't have a payment gateway.
 
