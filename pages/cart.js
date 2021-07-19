@@ -37,9 +37,9 @@ const Cart = () => {
       </Head>
         <Header />
         <div className="w-full container-height animate__animated animate__fadeIn">
-          <div className="px-16 flex items-center">
+          <div className="px-16 lg:px-2 flex items-center lg:block">
             
-            <div className="w-7/12 mt-4 px-4 h-96 overflow-auto">
+            <div className="w-7/12 lg:w-full mt-4 px-4 lg:px-0 h-96 overflow-auto lg:mb-12 lg:mx-auto">
             {cart.length > 0 ?
               cart.map( product => {
                 return <Product product={product} key={product.id} cart={true}/>
@@ -48,22 +48,22 @@ const Cart = () => {
             }
               
             </div>
-           <div className="w-5/12 mx-4">
+           <div className="w-5/12 lg:w-full mx-4 lg:mx-auto ">
             <h2 className="leading-none tracking-tighter title-font text-2xl text-center">Resumen</h2>
             
-              <div className="w-full bg-gray-300 h-64 mt-4 rounded-lg">
+              <div className="w-full bg-gray-300 h-64 lg:h-auto mt-4 rounded-lg">
                 <div className="grid grid-cols-2 p-4">
                   <div className="border-r-2 border-blue-800">
-                    <p className="text-lg text-center my-4">Cantidad</p>
-                    <p className="text-lg text-center my-4">Descuentos</p>
-                    <p className="text-lg text-center my-4">Subtotal</p>
-                    <p className="text-lg text-center my-4">TOTAL</p>
+                    <p className="text-lg md:text-sm text-center my-4">Cantidad</p>
+                    <p className="text-lg md:text-sm text-center my-4">Descuentos</p>
+                    <p className="text-lg md:text-sm text-center my-4">Subtotal</p>
+                    <p className="text-lg md:text-sm text-center my-4">TOTAL</p>
                   </div>
                   <div>
-                    <p className="text-lg text-center my-4">{cart.length} productos</p>
-                    <p className="text-lg text-center my-4">N/A</p>
-                    <p className="text-lg text-center my-4">$ {getTotal(cart)} USD</p>
-                    <p className="text-lg text-center my-4">$ {getTotal(cart)} USD</p>
+                    <p className="text-lg md:text-sm text-center my-4">{cart.length} productos</p>
+                    <p className="text-lg md:text-sm text-center my-4">N/A</p>
+                    <p className="text-lg md:text-sm text-center my-4">$ {getTotal(cart)} USD</p>
+                    <p className="text-lg md:text-sm text-center my-4">$ {getTotal(cart)} USD</p>
                   </div>
                 </div>
               </div>

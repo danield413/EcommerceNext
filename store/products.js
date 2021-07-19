@@ -55,6 +55,6 @@ export const {
     changeProducts,
     addToCart, 
     removeFromCart, 
-    leanCart 
+    cleanCart 
 } = productsSlice.actions;
 export default productsSlice.reducer;

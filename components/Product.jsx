@@ -1,17 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSnackbar } from 'notistack';
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../store/products';
 import useReduxSTore from '../hooks/useReduxStore';
 import { useRouter } from 'next/dist/client/router';
 import { RiAddCircleFill } from 'react-icons/ri';
 import { FaTrashAlt } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const Product = ({product, cart = false}) => {
 
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
     const router = useRouter();
     const { verifyProduct, verifyAuth } = useReduxSTore();
 
@@ -21,26 +20,59 @@ const Product = ({product, cart = false}) => {
         const isLogged = verifyAuth();
         if(!isLogged){
             router.push('/login');
-            enqueueSnackbar('Debes iniciar sesión primero', { variant: 'info' });
+            toast.info('Debes iniciar sesión primero', {
+                position: "bottom-left",
+                autoClose: 1500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             return;
         };
 
         const exists = verifyProduct( product.id );
         if(exists) {
-            enqueueSnackbar('El producto ya está añadido al carrito', { variant: 'info' })
+            toast.info('EL producto ya está añadido al carrito', {
+                position: "bottom-left",
+                autoClose: 1500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             return;
         } else {
             dispatch( addToCart(product) );
-            enqueueSnackbar('¡Producto añadido al carrito!', { variant: 'success' });
+            toast.success('Producto añadido al carrito', {
+                position: "bottom-left",
+                autoClose: 1500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 
     const handleRemoveFromCart = () => {
         dispatch( removeFromCart( product.id ) );
-        enqueueSnackbar('Producto removido del carrito', { variant: 'info' });
+        toast.info('Producto removido del carrito', {
+            position: "bottom-left",
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     return (
+        <>
         <div className="w-full h-38 rounded-lg py-4 my-8 grid grid-cols-2 lg:grid-cols-3 shadow-md animate__animated animate__fadeIn lg:text-sm sm:text-xs">
             <div className="flex justify-start">
                 <Image className="object-scale-down " src={product.image} alt="blog" width={300} height={144}/>
@@ -58,6 +90,8 @@ const Product = ({product, cart = false}) => {
                 
             </div>
         </div>
+        
+        </>
     )
 }
 

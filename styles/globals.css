@@ -9,6 +9,13 @@
     height: calc(100vh - 4rem);
 }
 
+@media screen and (max-width: 1023px) {
+    .container-height {
+        height: auto;
+        padding-bottom: 3rem;
+    }
+}
+
 .min-height-grid {
     min-height: calc(100vh - 5rem);
 }

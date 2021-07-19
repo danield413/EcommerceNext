@@ -2,8 +2,9 @@ import { Provider } from 'react-redux'
 import { store } from '../store'
 import '../styles/globals.css'
 import 'animate.css';
-import { SnackbarProvider } from 'notistack';
+import 'react-toastify/dist/ReactToastify.min.css';
 import LayoutCheck from '../components/LayoutCheck';
+import { ToastContainer } from 'react-toastify';
 
 function MyApp({ Component, pageProps }) {
 
@@ -11,9 +12,18 @@ function MyApp({ Component, pageProps }) {
   return (
       <Provider store={store}>
           <LayoutCheck>
-            <SnackbarProvider maxSnack={2}>
-              <Component {...pageProps} />
-            </SnackbarProvider>
+            <Component {...pageProps} />
+            <ToastContainer 
+                position="bottom-left"
+                autoClose={1500}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
           </LayoutCheck>
       </Provider>
   )

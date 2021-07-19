@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Image from 'next/image'
 import { logout } from '../store/auth';
 import { useRouter } from 'next/dist/client/router';
+import { cleanCart } from '../store/products';
 
 const User = () => {
 
@@ -16,6 +17,7 @@ const User = () => {
     const handleLogout = () => {
         router.replace('/login');
         dispatch( logout() );
+        dispatch( cleanCart() );
     }
 
     return (
