@@ -6,7 +6,7 @@ import useReduxSTore from '../hooks/useReduxStore';
 import { useRouter } from 'next/dist/client/router';
 import { RiAddCircleFill } from 'react-icons/ri';
 import { FaTrashAlt } from 'react-icons/fa';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 const Product = ({product, cart = false}) => {
 
@@ -20,54 +20,90 @@ const Product = ({product, cart = false}) => {
         const isLogged = verifyAuth();
         if(!isLogged){
             router.push('/login');
-            toast.info('Debes iniciar sesión primero', {
-                position: "bottom-left",
-                autoClose: 1500,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+            toast('Primero debes iniciar sesión', {
+                duration: 3000,
+                position: 'top-center',
+                // Styling
+                style: { backgroundColor: '#2AAAC8', color: 'white' },
+                className: '❗️',
+                // Custom Icon
+                icon: '',
+                // Change colors of success/error/loading icon
+                iconTheme: {
+                  primary: '#fff',
+                },
+                // Aria
+                ariaProps: {
+                  role: 'status',
+                  'aria-live': 'polite',
+                },
             });
             return;
         };
 
         const exists = verifyProduct( product.id );
         if(exists) {
-            toast.info('El producto ya está añadido al carrito', {
-                position: "bottom-left",
-                autoClose: 1500,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+            toast('El producto ya está en el carrito', {
+                duration: 3000,
+                position: 'top-center',
+                // Styling
+                style: { backgroundColor: '#2AAAC8', color: 'white' },
+                className: '',
+                // Custom Icon
+                icon: '❗️',
+                // Change colors of success/error/loading icon
+                iconTheme: {
+                  primary: '#fff',
+                },
+                // Aria
+                ariaProps: {
+                  role: 'status',
+                  'aria-live': 'polite',
+                },
             });
             return;
         } else {
             dispatch( addToCart(product) );
-            toast.success('Producto añadido al carrito', {
-                position: "bottom-left",
-                autoClose: 1500,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+            toast('Producto añadido al carrito', {
+                duration: 3000,
+                position: 'top-center',
+                // Styling
+                style: { backgroundColor: '#2AC85D', color: 'white' },
+                className: '',
+                // Custom Icon
+                icon: '✔',
+                // Change colors of success/error/loading icon
+                iconTheme: {
+                  primary: '#fff',
+                },
+                // Aria
+                ariaProps: {
+                  role: 'status',
+                  'aria-live': 'polite',
+                },
             });
         }
     }
 
     const handleRemoveFromCart = () => {
         dispatch( removeFromCart( product.id ) );
-        toast.info('Producto removido del carrito', {
-            position: "bottom-left",
-            autoClose: 1500,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+        toast('Producto removido del carrito', {
+            duration: 3000,
+            position: 'top-center',
+            // Styling
+            style: { backgroundColor: '#2AC85D', color: 'white' },
+            className: '',
+            // Custom Icon
+            icon: '✔',
+            // Change colors of success/error/loading icon
+            iconTheme: {
+              primary: '#fff',
+            },
+            // Aria
+            ariaProps: {
+              role: 'status',
+              'aria-live': 'polite',
+            },
         });
     }
 

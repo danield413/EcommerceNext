@@ -23,11 +23,11 @@ const User = () => {
     return (
         <>
             <Head>
-                <title>{displayName && displayName} | Ecommerce</title>
+                <title>{displayName ? displayName : 'Usuario'} | Ecommerce</title>
             </Head>
             <Header />
             <main className="min-h-screen container-height md:px-4">
-                <div className="mt-4 w-96 md:w-full  h-80 bg-blue-300 mx-auto flex flex-col">
+                <div className="mt-4 w-96 md:w-full  h-80 bg-blue-300 mx-auto flex flex-col  animated__animated animate__fadeIn">
                     <div className="gradient-user flex justify-center row-start-1 row-end-2">
                         {picture && <Image src={picture} alt={displayName} height={100} width={100} className="rounded-full"/>}
                     </div>

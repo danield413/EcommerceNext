@@ -18,11 +18,10 @@ const Cart = () => {
           <title>Mi carrito</title>
         </Head>
         <Header />
-        <div className="bg-gray-700 w-full container-height text-white py-8 flex flex-col">
-          <h2 className="text-4xl text-center">UPS...</h2>
-          <h3 className="text-xl text-center">Debes iniciar sesión primero</h3>
+        <div className="bg-gray-800 w-full login-height text-white py-8 flex flex-col">
+          <h3 className="text-xl text-center">¿Deseas iniciar sesión?</h3>
           <Link href="/login">
-            <a className="mt-4 self-center border-2 w-40 text-center border-white px-4 py-2 rounded-lg hover:bg-white hover:text-black transition focus:ring-4 focus:ring-blue-500">Iniciar sesión</a>
+            <a className="mt-4 self-center border-2 w-40 text-center border-white px-4 py-2 rounded-lg hover:bg-white hover:text-black transition focus:ring-4 focus:ring-blue-500 md:text-sm">Iniciar sesión</a>
           </Link>
         </div>
         <Footer />

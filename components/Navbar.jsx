@@ -8,7 +8,7 @@ import { RiShoppingCartLine } from 'react-icons/ri';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
 
-const Navbar = () => {
+const Navbar = ({ input = true }) => {
   
   const { picture, displayName } = useSelector(state => state.auth);
   const { cart } = useSelector(state => state.products);
@@ -29,6 +29,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div></div>
+        {input && 
         <div className="inline-block">
           <form className="flex items-center" >
             <input
@@ -38,7 +39,7 @@ const Navbar = () => {
               onChange={handleChange}
             />
           </form>
-        </div>
+        </div>}
         <div className="inline-block flex items-center">
           <span className="text-sm text-white  md:hidden">{ cart.length }</span>
           <div className="inline-block text-white xs:mr-2 mr-4 cursor-pointer hover:text-gray-400 transition md:hidden">

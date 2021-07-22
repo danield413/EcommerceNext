@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import Image from 'next/image';
 import Spinner from '../../components/Spinner';
+import Head from 'next/head';
 
 const ProductPage = () => {
 
@@ -33,14 +34,20 @@ const ProductPage = () => {
 
     return (
         <>
-            <Navbar />
+            <Head>
+                <title>
+                    {product ? `${product.title} | Ecommerce` : 'Producto | Ecommerce'}
+                </title>
+                <meta name="description" content={product ? product.description : 'Producto no encontrado' } />
+            </Head>
+            <Navbar input={false} />
                 <main className="product-height py-16 flex items-center md:items-start">
                     {
                         loading && <Spinner />
                     }
                     {
                         (product && !loading) && 
-                        <article className="grid grid-cols-3 px-8 sm:px-2 md:py-8 md:grid-cols-1 md:grid-rows-2 flex justify-center">
+                        <article className="grid grid-cols-3 px-8 sm:px-2 md:py-8 md:grid-cols-1 md:grid-rows-2 flex justify-center animate__animated animate__fadeIn">
                             <div className="col-start-1 col-end-2 md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-2 md:mb-4 flex justify-center">
                                 <Image className="object-scale-down" src={product.image} alt={product.title} width={200} height={200}/>
                             </div>
@@ -52,6 +59,11 @@ const ProductPage = () => {
                             </div>
                         </article>
                         
+                    }
+                    {
+                        (!product && !loading) && <div className="w-full product-height flex items-center justify-center">
+                            <h1 className="text-center uppercase animate__animated animate__shakeX md:text-sm">UPS, producto no encontrado...</h1>
+                        </div>
                     }
                 </main>
             <Footer/>
