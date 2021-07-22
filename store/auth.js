@@ -14,7 +14,7 @@ export const startGoogleLogin = createAsyncThunk('auth/google', async () => {
         picture: resp.user.photoURL
     }
 
-    const url = 'http://localhost:3000' || process.env.URL;
+    const url = process.env.URL;
 
     const tokenResp = await axios.post(`${url}/api/create`, data)
 
@@ -25,8 +25,8 @@ export const startGoogleLogin = createAsyncThunk('auth/google', async () => {
 
 export const startChecking = createAsyncThunk('auth/token-verify', async () => {
 
-    const url = 'http://localhost:3000' || process.env.URL;
-    
+    const url = process.env.URL;
+
     //JWT auth verify
     const token = localStorage.getItem('Ecomm-tkn');
     const resp = await axios.post(`${url}/api/verify`, {
