@@ -34,7 +34,7 @@ const Product = ({product, cart = false}) => {
 
         const exists = verifyProduct( product.id );
         if(exists) {
-            toast.info('EL producto ya está añadido al carrito', {
+            toast.info('El producto ya está añadido al carrito', {
                 position: "bottom-left",
                 autoClose: 1500,
                 hideProgressBar: true,
@@ -80,7 +80,7 @@ const Product = ({product, cart = false}) => {
             <div className="relative lg:col-start-2 lg:col-end-4 lg:px-2">
                 <h2 className="my-4 text-md text-black uppercase title-font">{product.title}</h2>
                 <h4 className="my-4 text-sm sm:text-xs">$ {product.price} USD</h4>
-                {!cart && <Link href="/">
+                {!cart && <Link href={`/product/${product.id}`}>
                     <a className="block text-blue-800 w-16">Ver más</a>
                  </Link>}
                 {cart ? 

@@ -39,7 +39,7 @@ const Cart = () => {
         <div className="w-full container-height animate__animated animate__fadeIn">
           <div className="px-16 lg:px-2 flex items-center lg:block">
             
-            <div className="w-7/12 lg:w-full mt-4 px-4 lg:px-0 h-96 overflow-auto lg:mb-12 lg:mx-auto">
+            <div className="w-7/12 lg:w-full mt-4 px-4 lg:px-0 h-96 lg:12rem overflow-auto lg:mb-12 lg:mx-auto">
             {cart.length > 0 ?
               cart.map( product => {
                 return <Product product={product} key={product.id} cart={true}/>

@@ -24,6 +24,9 @@ module.exports = {
       'xs': {'max': '500px'},
 
       '2xs' : {'max': '400px'},
+    },
+    maxHeight: {
+      '12rem': '12rem'
     }
   },
   variants: {},

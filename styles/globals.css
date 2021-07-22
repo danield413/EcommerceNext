@@ -8,6 +8,12 @@
 .container-height {
     height: calc(100vh - 4rem);
 }
+.login-height {
+    height: calc(100vh - 4rem);
+}
+.product-height {
+    min-height: calc(100vh - 4rem);
+}
 
 @media screen and (max-width: 1023px) {
     .container-height {
@@ -21,7 +27,7 @@
 }
 
 .gradient-user {
-    background-image: linear-gradient(180deg, #fff 50%, #9CA3AF 50%);
+    background-image: linear-gradient(180deg, #fff 50%, #93C5FD 50%);
 }
 
 /* spinner - spinKit */
